@@ -1,7 +1,11 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+angular.module('ejemploexamen').config(['$routeProvider', '$httpProvider', function config($routeProvider, $httpProvider) {
+        $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+        $routeProvider.
+                when('/', {
+                    controller: 'loginController',
+                    templateUrl: 'app/template/login.html'
+                }).
+                otherwise('/');
+    }]);
 
 
