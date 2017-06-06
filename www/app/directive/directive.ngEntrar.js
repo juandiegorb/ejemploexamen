@@ -1,4 +1,4 @@
-angular.module('IMPERIUM').directive('ngEntrar', function () {
+angular.module('ejemploexamen').directive('ngEntrar', function () {
   return function (scope, element, attrs) {
     element.bind("keydown keypress", function (event) {
       if (event.which === 13) {

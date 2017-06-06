@@ -33,7 +33,7 @@ class usuarioDAO extends dataSource implements IUsuario {
     public function insert(\usuario $usuario) {
         $sql = 'INSERT INTO usuario (usu_alias, usu_contrasena,rol_id,create_at) VALUES (:alias,:contrasena,:rol ,now())';
         $params = array(
-            ':usuario' => $usuario->getUsuario(),
+            ':alias' => $usuario->getAlias(),
             ':contrasena' => $usuario->getContrasena(),
             ':rol' => $usuario->getRol()
         );
@@ -45,8 +45,8 @@ class usuarioDAO extends dataSource implements IUsuario {
      * @return array of stdClass
      */
     public function select() {
-        $sql = 'select c.usu_cedula,c.usu_nombre,c.usu_correo,c.usu_celular,c.usu_usuario,r.rol_nombre
-from ces_usuario as c inner join ces_rol as r on c.rol_id=r.rol_id';
+        $sql = 'select c.usu_alias,c.usu_contrasena
+from usuario as c inner join rol as r on c.rol_id=r.rol_id';
         return $this->query($sql);
     }
 

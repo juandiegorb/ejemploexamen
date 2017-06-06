@@ -31,8 +31,7 @@ class contactoDAO extends dataSource implements IContacto {
     }
 
     public function select() {
-        $sql = 'select c.usu_cedula,c.usu_nombre,c.usu_correo,c.usu_celular,c.usu_usuario,r.rol_nombre
-from ces_usuario as c inner join ces_rol as r on c.rol_id=r.rol_id';
+        $sql = 'SELECT con_foto, con_nombre, con_apellido, con_telefono, con_correo FROM contacto WHERE delete_at IS NULL';
         return $this->query($sql);
     }
 

@@ -1,21 +1,22 @@
-angular.module('ejemploexamen').controller('loginController', ['$scope', 'securityService', '$localStorage', '$sessionStorage', '$location', 'rolAdmin', function ($scope, security, $localStorage, $sessionStorage, $location, rolAdmin) {
+angular.module('ejemploexamen').controller('loginController', ['$scope', 'securityService', '$sessionStorage', '$location', 'rolAdmin', function ($scope, security, $sessionStorage, $location, rolAdmin) {
         $scope.datos = {};
-        $scope.entrar = function () {
+        $scope.usuarioErroneo = false;
 
+        $scope.submit = function () {
             security.validateUserAndPassword($scope.datos).then(function successCallback(response) {
-                console.log(response);
+                // console.log(response);
                 $scope.usuarioErroneo = false;
-                if (response.data.codigo == 500) {
+                if (response.data.code == 500) {
                     $scope.usuarioErroneo = true;
                     $scope.datos = {};
                 } else {
-                    console('hola');
-//                    $sessionStorage.usuario = response.data.usuario[0];
-//                    if ($sessionStorage.usuario.rol_id == rolAdmin) {
-//                        $location.path('/menuPrincipal');
-//                    } else {
-//                        $location.path('/ces');
-//                    }
+                    $location.path('/agenda');
+                    $sessionStorage.usuario = response.data.datos[0];
+                    ($sessionStorage.usuario == rolAdmin)
+                    
+                    {
+                        
+                    }
                 }
             }, function errorCallback(response) {
                 console.error(response);
@@ -23,4 +24,3 @@ angular.module('ejemploexamen').controller('loginController', ['$scope', 'securi
 
         };
     }]);
-
