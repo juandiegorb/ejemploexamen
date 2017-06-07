@@ -1,4 +1,27 @@
-<div class="form-horizontal">
-    hola
-    
-</div>
+<div ng-include=" 'app/template/partial/cabezera.html'"></div>
+
+<div class="panel-body col-lg-offset-1 col-lg-10 panelfondo">
+    <table class="table tablaagenda">
+        <tr>
+            <th>Foto</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Telefóno</th>
+            <th>Correo</th>
+            <th>Acciones</th>
+        </tr>
+        <tr ng-repeat="contacto in contacto">
+            <td>{{contacto.con_foto}}</td>
+            <td>{{contacto.con_nombre}}</td>
+            <td>{{contacto.con_apellido}}</td>
+            <td>{{contacto.con_telefono}}</td>
+            <td>{{contacto.con_foto}}</td>
+            <td><i ng-click="editar(contacto)" title="Editar" class="glyphicon glyphicon-edit"> </i>
+                <i ng-click="Eliminar(contacto)" title="Eliminar" class="glyphicon glyphicon-trash"></i></td>
+        </tr>
+
+    </table>
+
+
+</div>    
+

@@ -10,12 +10,10 @@ angular.module('ejemploexamen').controller('loginController', ['$scope', 'securi
                     $scope.usuarioErroneo = true;
                     $scope.datos = {};
                 } else {
-                    $location.path('/agenda');
                     $sessionStorage.usuario = response.data.datos[0];
-                    ($sessionStorage.usuario == rolAdmin)
-                    
+                    if ($sessionStorage.usuario.rol_id == rolAdmin)
                     {
-                        
+                        $location.path('/agenda');
                     }
                 }
             }, function errorCallback(response) {

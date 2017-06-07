@@ -5,11 +5,11 @@ angular.module('ejemploexamen').constant('rolAdmin', 1);
 angular.module('ejemploexamen').config(['$middlewareProvider',
     function middlewareProviderConfig($middlewareProvider) {
         $middlewareProvider.map({
-            'comprobarSession': ['$localStorage', '$sessionStorage', function comprobarSession($localStorage, $sessionStorage) {
-                    middlewareComprobarSession(this, $localStorage, $sessionStorage);
+            'comprobarSession': ['$sessionStorage', function comprobarSession($sessionStorage) {
+                    middlewareComprobarSession(this, $sessionStorage);
                 }],
-            'comprobarNoTenerSession': ['$localStorage', '$sessionStorage', 'rolAdmin', function comprobarNoTenerSession($localStorage, $sessionStorage, rolAdmin) {
-                    middlewareComprobarNoTenerSession(this, $localStorage, $sessionStorage, rolAdmin);
+            'comprobarNoTenerSession': ['$sessionStorage', 'rolAdmin', function comprobarNoTenerSession($sessionStorage, rolAdmin) {
+                    middlewareComprobarNoTenerSession(this, $sessionStorage, rolAdmin);
                 }]
         });
     }]);
@@ -27,6 +27,11 @@ angular.module('ejemploexamen').config(['$routeProvider', '$httpProvider', funct
                 when('/agenda', {
                     controller: 'agendaController',
                     templateUrl: 'app/template/agenda.html',
+                    middleware: ['comprobarSession']
+                }).
+                when('/agregarcontacto', {
+                    controller: 'agregarcontactoController',
+                    templateUrl: 'app/template/agregarcontacto.html',
                     middleware: ['comprobarSession']
                 }).
                 when('/logout', {
