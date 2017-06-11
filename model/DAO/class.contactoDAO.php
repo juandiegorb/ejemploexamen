@@ -19,7 +19,7 @@ class contactoDAO extends dataSource implements IContacto {
     }
 
     public function insert(\contacto $contacto) {
-        $sql = 'INSERT INTO contacto (con_foto, con_nombre, con_apellido, con_telefono, con_correo, create_at) VALUES (:foto, :nombre, :apellido, :telefono, :correo,now())';
+        $sql = 'INSERT INTO contacto (con_foto, con_nombre, con_apellido, con_telefono, con_correo, create_at) VALUES (:foto, :nombre, :apellido, :telefono, :correo, now())';
         $params = array(
             ':foto' => $contacto->getFoto(),
             ':nombre' => $contacto->getNombre(),
