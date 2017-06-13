@@ -10,6 +10,6 @@ interface IContacto {
 
     public function update(contacto $contacto);
 
-    public function delete($id, $logico = true);
+    public function delete($id, $logico );
 
     }

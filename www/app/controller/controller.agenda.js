@@ -1,4 +1,4 @@
-angular.module('ejemploexamen').controller('agendaController', ['$scope', '$location', '$sessionStorage', 'mostrarTablaService', function ($scope, $location, $sessionStorage, mostrartabla) {
+angular.module('ejemploexamen').controller('agendaController', ['$scope', '$location', '$sessionStorage', 'mostrarTablaService', "$timeout", function ($scope, $location, $sessionStorage, mostrartabla, $timeout) {
         $scope.contacto = [];
 
         /*Funcion mostrar Tabla*/
@@ -23,6 +23,34 @@ angular.module('ejemploexamen').controller('agendaController', ['$scope', '$loca
             $sessionStorage.datospersona = contacto;
             $location.path('/editarcontacto');
         };
+
+
+        /*Funcion Eliminar*/
+        $scope.Eliminarcontacto = function (datos) {
+            $('#eliminarContacto').modal('toggle');
+            $scope.nombre = datos.con_nombre;
+            $scope.ideliminar = datos.con_id;
+        };
+
+        $scope.submitEliminarContacto = function () {
+            mostrartabla.eliminarcontacto({id: $scope.ideliminar}).then(function successCallback(response) {
+                $scope.usuarioEliminado = false;
+                if (response.data.code == 500) {
+                } else {
+                    $scope.usuarioEliminado = true;
+                    $timeout(function () {
+                        $('#eliminarContacto').modal('toggle');
+                    }, 700);
+                    $timeout(function () {
+                        // $route.reload();
+                        window.location.reload();
+                    }, 1000);
+                }
+            }, function errorCallback(response) {
+                console.error(response);
+            });
+        };
+        /*Fin Funcion Eliminar*/
 
 
 

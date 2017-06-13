@@ -8,14 +8,18 @@ class contactoDAO extends dataSource implements IContacto {
     public function delete($id, $logico = true) {
 
         if ($logico === true) {
-            $sql = 'UPDATE FROM contacto SET delete_at = now() WHERE con_id = :id';
-        } else {
-            $sql = 'DELETE FROM contacto WHERE con_id = :id';
+            $sql = 'UPDATE contacto SET delete_at = now() WHERE con_id = :id';
+            $params = array(
+                ':id' => $id
+            );
+            return $this->execute($sql, $params);
+        } else if ($logico === false) {
+            $sql = 'DELETE FROM contacto WHERE con_id = :id AND delete_at is NULL';
+            $params = array(
+                ':id' => $id
+            );
+            return $this->execute($sql, $params);
         }
-        $params = array(
-            ':id' => $id
-        );
-        return $this->execute($sql, $params);
     }
 
     public function insert(\contacto $contacto) {
