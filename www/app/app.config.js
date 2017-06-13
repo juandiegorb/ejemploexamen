@@ -34,6 +34,11 @@ angular.module('ejemploexamen').config(['$routeProvider', '$httpProvider', funct
                     templateUrl: 'app/template/agregarcontacto.html',
                     middleware: ['comprobarSession']
                 }).
+                when('/editarcontacto', {
+                    controller: 'editarcontactoController',
+                    templateUrl: 'app/template/editarcontacto.html',
+                    middleware: ['comprobarSession']
+                }).
                 when('/logout', {
                     controller: 'logoutController',
                     template: '<p>Cerrando sesión...</p>',

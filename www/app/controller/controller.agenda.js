@@ -1,4 +1,4 @@
-angular.module('ejemploexamen').controller('agendaController', ['$scope', '$localStorage', '$sessionStorage', 'mostrarTablaService', function ($scope, $localStorage, $sessionStorage, mostrartabla) {
+angular.module('ejemploexamen').controller('agendaController', ['$scope', '$location', '$sessionStorage', 'mostrarTablaService', function ($scope, $location, $sessionStorage, mostrartabla) {
         $scope.contacto = [];
 
         /*Funcion mostrar Tabla*/
@@ -17,6 +17,16 @@ angular.module('ejemploexamen').controller('agendaController', ['$scope', '$loca
 
         $scope.pintarTablaCon();
         /*Fin Funcion mostrar Tabla*/
+
+        /* funcion de editar contacto*/
+        $scope.editarcontacto = function (contacto) {
+            $sessionStorage.datospersona = contacto;
+            $location.path('/editarcontacto');
+        };
+
+
+
+
     }]);
 
 

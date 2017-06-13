@@ -3,6 +3,7 @@
 <div class="panel-body col-lg-offset-1 col-lg-10 panelfondo">
     <table class="table tablaagenda">
         <tr>
+            <th hidden>Id</th>
             <th>Foto</th>
             <th>Nombre</th>
             <th>Apellido</th>
@@ -11,17 +12,16 @@
             <th>Acciones</th>
         </tr>
         <tr ng-repeat="contacto in contacto">
+
+            <td hidden>{{contacto.con_id}}</td>
             <td>{{contacto.con_foto}}</td>
             <td>{{contacto.con_nombre}}</td>
             <td>{{contacto.con_apellido}}</td>
             <td>{{contacto.con_telefono}}</td>
-            <td>{{contacto.con_foto}}</td>
-            <td><i ng-click="editar(contacto)" title="Editar" class="glyphicon glyphicon-edit"> </i>
-                <i ng-click="Eliminar(contacto)" title="Eliminar" class="glyphicon glyphicon-trash"></i></td>
+            <td>{{contacto.con_correo}}</td>
+            <td><i ng-click="editarcontacto(contacto)" title="Editar" class="glyphicon glyphicon-edit"> </i>
+                <i ng-click="Eliminarcontacto(contacto)" title="Eliminar" class="glyphicon glyphicon-trash"></i></td>
         </tr>
-
     </table>
-
-
 </div>    
 

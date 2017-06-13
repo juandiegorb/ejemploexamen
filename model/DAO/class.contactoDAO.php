@@ -31,7 +31,7 @@ class contactoDAO extends dataSource implements IContacto {
     }
 
     public function select() {
-        $sql = 'SELECT con_foto, con_nombre, con_apellido, con_telefono, con_correo FROM contacto WHERE delete_at IS NULL';
+        $sql = 'SELECT con_id,con_foto, con_nombre, con_apellido, con_telefono, con_correo FROM contacto WHERE delete_at IS NULL';
         return $this->query($sql);
     }
 
@@ -51,6 +51,7 @@ class contactoDAO extends dataSource implements IContacto {
     public function update(\contacto $contacto) {
         $sql = 'UPDATE contacto SET con_foto = :foto, con_nombre = :nombre, con_apellido = :apellido, con_telefono = :telefono, con_correo = :correo WHERE con_id = :id';
         $params = array(
+            ':id' => $contacto->getId(),
             ':foto' => $contacto->getFoto(),
             ':nombre' => $contacto->getNombre(),
             ':apellido' => $contacto->getApellido(),
