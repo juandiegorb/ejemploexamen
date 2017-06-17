@@ -2,14 +2,13 @@
 
 class contactoDAOExt extends contactoDAO {
 
-    public function search($nombre, $apellido, $telefono) {
-        $sql = 'SELECT con_foto, con_nombre, con_apellido, con_telefono, con_correo FROM contacto WHERE con_nombre = :nombre OR con_apellido = :apellido OR con_telefono = :telefono';
+    public function buscar($nombre) {
+        $sql = 'SELECT con_id, con_foto, con_nombre, con_apellido,con_telefono,con_correo FROM contacto WHERE con_nombre LIKE :nombre OR con_apellido LIKE :nombre OR con_telefono LIKE :nombre AND delete_at IS NULL';
         $params = array(
-            ':nombre' => $nombre,
-            ':apellido' => $apellido,
-            ':telefono' => $telefono,
+            ':nombre' => '%' . $nombre,
+            ':nombre' => $nombre . '%',
+            ':nombre' => '%' . $nombre . '%',
         );
-
         return $this->query($sql, $params);
     }
 

@@ -1,0 +1,27 @@
+.targeta{
+
+}
+.parrafoTargeta{
+    font-family: Papyrus;
+    font-size: 18px;
+    margin-bottom: 0px;
+}
+
+.headerTargeta{
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+.botonTargeta{
+    font-family: Berlin Sans FB;
+}
+
+.textMensaje{
+    font-size: 30px;
+}
+
+.imgTargeta{
+    width: 200px;
+    height: 100px;
+    margin-top: 5px;
+}

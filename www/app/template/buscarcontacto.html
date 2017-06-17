@@ -1,0 +1,46 @@
+<div ng-include=" 'app/template/partial/cabezera.html'" ng-init="sessionStorage = session"></div>
+<div class="container-fluid">
+    <div class="col-lg-12  principal">
+        <div class="row" style="margin-top: 0px;">
+            <div class="col-lg-10 col-lg-offset-1" style="margin-top: 20px;">
+                <div class="page header">
+                    <h1 class="titulo2"><small class="glyphicon glyphicon-search"></small> Resultado de la Busqueda<a href="#!/inicio"><small class="glyphicon glyphicon-menu-right iconoAtras"></small></a></h1>
+                </div>
+                <div class="row">
+                    <div class="alert alert-success" ng-show="busquedadFallida">
+                        <center><p class="textMensaje"><small class="glyphicon glyphicon-info-sign"></small> No hay resultado de busqueda</p></center>
+                    </div>
+                    <div class="col-lg-4 targeta" ng-repeat="contacto in contactos">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-3">
+                                        <!--<center><img src="{{urlUploads + contacto.con_foto}}" class="img-responsive img-circle imgTargeta"></center>-->
+                                    </div>
+                                    <div class="col-lg-9">
+                                        <div class="page-header headerTargeta">
+                                            <p class="parrafoTargeta"><span>{{contacto.con_nombre}} {{contacto.con_apellido}}</span></p>
+                                        </div>
+                                        <p class="parrafoTargeta">Telefono: <span>{{contacto.con_telefono}}</span></p>
+                                        <p class="parrafoTargeta">Correo: <span>{{contacto.con_correo}}</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-footer">
+                                <div class="row">
+                                    <div class="col-lg-4 col-lg-offset-4">
+                                        <button ng-click="editar(contacto)" class="btn btn-block btn-success botonTargeta">Editar</button>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <button class="btn btn-block btn-danger botonTargeta" ng-click="eliminar2(contacto)">Eliminar</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

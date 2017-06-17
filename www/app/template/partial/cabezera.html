@@ -2,10 +2,10 @@
     <div class="col-lg-8 letratitulo">
         Agenda telefónica
     </div>
-    <form>
+    <form ng-submit="buscar()">
         <div class="col-lg-4 posicion">
-            <input  type="Text" class="buscartexto" placeholder="Buscar">
-            <button class="btn btn-default botones" type="button" ><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+            <input  type="text" class="buscartexto" placeholder="Buscar" ng-model="sessionStorage.persona">
+            <button class="btn btn-default botones" type="submit" ><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
             <a href="#!agregarcontacto" class="btn btn-default botones">Agregar</a>
             <a href="#!/logout" class="btn btn-default botones">Logout</a>
         </div>
